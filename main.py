@@ -18,6 +18,7 @@ class Workspace(QWidget, Ui_Workspace):
         self.encryptButton.clicked.connect(self.encrypt)
         self.decryptButton.clicked.connect(self.decrypt)
         self.infoButton.clicked.connect(self.getinfo)
+        self.setFixedSize(self.size())
 
     def choosefile(self):
         self.directory = QFileDialog.getOpenFileName(self, "Выберите файл")[0]
@@ -53,8 +54,13 @@ class Workspace(QWidget, Ui_Workspace):
         self.nonce = get_random_bytes(12)
         self.filename = filename
         reqdata = self.choosedata('encrypt')
-        password = SHA256.new(self.passEdit.text().encode('utf-8')).digest()
+        passwd = self.passEdit.text().encode('utf-8')
+        if passwd:
+            password = SHA256.new(passwd).digest()
+        else:
+            password = b''
         self.key = formenckey(password, reqdata)
+        print(self.key)
         self.enc = AES.new(self.key, AES.MODE_GCM, nonce=self.nonce)
         with open(self.directory, 'rb') as filein, open(self.outdirectory + self.filename, 'wb') as fileout:
             fileout.write(self.nonce)

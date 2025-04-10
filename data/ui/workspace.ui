@@ -6,17 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
+    <width>700</width>
     <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Широфвка/Дешифровка</string>
+   <string>Шифрофвка/Дешифровка</string>
   </property>
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>430</x>
      <y>0</y>
      <width>20</width>
      <height>501</height>
@@ -35,10 +35,10 @@
   <widget class="Line" name="line_2">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>320</y>
-     <width>201</width>
-     <height>16</height>
+     <x>440</x>
+     <y>288</y>
+     <width>261</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="frameShadow">
@@ -54,10 +54,10 @@
   <widget class="Line" name="line_3">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>150</y>
-     <width>201</width>
-     <height>16</height>
+     <x>440</x>
+     <y>148</y>
+     <width>261</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="frameShadow">
@@ -73,7 +73,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>490</x>
      <y>30</y>
      <width>161</width>
      <height>20</height>
@@ -102,8 +102,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>180</y>
+     <x>490</x>
+     <y>170</y>
      <width>161</width>
      <height>16</height>
     </rect>
@@ -125,39 +125,48 @@
   <widget class="QLineEdit" name="passEdit">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>450</x>
      <y>80</y>
-     <width>161</width>
+     <width>240</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
+    <string/>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Normal</enum>
+   </property>
+   <property name="placeholderText">
     <string>Введите пароль...</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="pathEdit">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>220</y>
-     <width>161</width>
+     <x>450</x>
+     <y>200</y>
+     <width>240</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>Путь к файлу...</string>
+    <string/>
    </property>
    <property name="readOnly">
     <bool>false</bool>
+   </property>
+   <property name="placeholderText">
+    <string>Путь к файлу...</string>
    </property>
   </widget>
   <widget class="QPushButton" name="fileButton">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>260</y>
-     <width>141</width>
-     <height>28</height>
+     <x>489</x>
+     <y>245</y>
+     <width>161</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -174,10 +183,10 @@
   <widget class="QPushButton" name="encryptButton">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>370</y>
-     <width>141</width>
-     <height>28</height>
+     <x>489</x>
+     <y>340</y>
+     <width>161</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -194,10 +203,10 @@
   <widget class="QPushButton" name="decryptButton">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>430</y>
-     <width>141</width>
-     <height>28</height>
+     <x>489</x>
+     <y>415</y>
+     <width>161</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -220,8 +229,29 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="sizeIncrement">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QCheckBox" name="uuidBox">
@@ -266,9 +296,9 @@
   <widget class="QLineEdit" name="macEdit">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>250</x>
      <y>30</y>
-     <width>161</width>
+     <width>171</width>
      <height>22</height>
     </rect>
    </property>
@@ -281,11 +311,14 @@
    <property name="maxLength">
     <number>32767</number>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLineEdit" name="uuidEdit">
    <property name="geometry">
     <rect>
-     <x>15</x>
+     <x>35</x>
      <y>200</y>
      <width>371</width>
      <height>22</height>
@@ -294,11 +327,14 @@
    <property name="text">
     <string/>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLineEdit" name="cpuEdit">
    <property name="geometry">
     <rect>
-     <x>15</x>
+     <x>35</x>
      <y>260</y>
      <width>371</width>
      <height>22</height>
@@ -307,18 +343,24 @@
    <property name="text">
     <string/>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLineEdit" name="diskserialEdit">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>250</x>
      <y>60</y>
-     <width>161</width>
+     <width>171</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -326,7 +368,7 @@
     <rect>
      <x>35</x>
      <y>30</y>
-     <width>71</width>
+     <width>101</width>
      <height>20</height>
     </rect>
    </property>
@@ -338,7 +380,7 @@
     </font>
    </property>
    <property name="text">
-    <string>MAC:</string>
+    <string>MAC Адрес:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -386,7 +428,7 @@
     <rect>
      <x>35</x>
      <y>60</y>
-     <width>171</width>
+     <width>191</width>
      <height>20</height>
     </rect>
    </property>
@@ -398,7 +440,7 @@
     </font>
    </property>
    <property name="text">
-    <string>С.Н. Диска:</string>
+    <string>С.Н. Жёсткого диска:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_9">
@@ -406,8 +448,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>601</width>
-     <height>501</height>
+     <width>701</width>
+     <height>500</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -422,7 +464,7 @@
     <rect>
      <x>0</x>
      <y>150</y>
-     <width>401</width>
+     <width>441</width>
      <height>16</height>
     </rect>
    </property>
@@ -454,7 +496,7 @@
     <rect>
      <x>35</x>
      <y>90</y>
-     <width>171</width>
+     <width>201</width>
      <height>20</height>
     </rect>
    </property>
@@ -466,33 +508,39 @@
     </font>
    </property>
    <property name="text">
-    <string>С.Н. Мат. платы:</string>
+    <string>С.Н. Материнской платы:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="mbserialEdit">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>250</x>
      <y>90</y>
-     <width>161</width>
+     <width>171</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="gpuserialEdit">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>250</x>
      <y>120</y>
-     <width>161</width>
+     <width>171</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QCheckBox" name="gpuserialBox">
@@ -513,7 +561,7 @@
     <rect>
      <x>35</x>
      <y>120</y>
-     <width>171</width>
+     <width>81</width>
      <height>20</height>
     </rect>
    </property>
@@ -525,77 +573,86 @@
     </font>
    </property>
    <property name="text">
-    <string>С.Н. GPU</string>
+    <string>С.Н. GPU:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="uuidinfoEdit">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>380</y>
-     <width>371</width>
+     <width>381</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>UUID Системы</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
    <property name="readOnly">
     <bool>true</bool>
+   </property>
+   <property name="placeholderText">
+    <string>UUID Системы</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="cpuinfoEdit">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>410</y>
-     <width>371</width>
+     <width>381</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>Полное название процессора</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
    <property name="readOnly">
     <bool>true</bool>
+   </property>
+   <property name="placeholderText">
+    <string>Полное название процессора</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="mbserialinfoEdit">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>350</y>
      <width>181</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>С.Н. Мат. платы:</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
    <property name="readOnly">
     <bool>true</bool>
+   </property>
+   <property name="placeholderText">
+    <string>С.Н. Мат. платы:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="gpuserialinfoEdit">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>230</x>
      <y>350</y>
      <width>181</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>С.Н. GPU</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -603,11 +660,14 @@
    <property name="readOnly">
     <bool>true</bool>
    </property>
+   <property name="placeholderText">
+    <string>С.Н. GPU</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="macinfoEdit">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>320</y>
      <width>181</width>
      <height>22</height>
@@ -620,7 +680,10 @@
     <string/>
    </property>
    <property name="text">
-    <string>MAC</string>
+    <string/>
+   </property>
+   <property name="frame">
+    <bool>true</bool>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -628,24 +691,30 @@
    <property name="readOnly">
     <bool>true</bool>
    </property>
+   <property name="placeholderText">
+    <string>MAC</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="serialinfoEdit">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>230</x>
      <y>320</y>
      <width>181</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>С.Н. Диска</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
    <property name="readOnly">
     <bool>true</bool>
+   </property>
+   <property name="placeholderText">
+    <string>С.Н. Диска</string>
    </property>
   </widget>
   <widget class="Line" name="line_5">
@@ -653,7 +722,7 @@
     <rect>
      <x>0</x>
      <y>290</y>
-     <width>401</width>
+     <width>441</width>
      <height>16</height>
     </rect>
    </property>
