@@ -6,7 +6,10 @@ from Crypto.Hash import SHA256
 
 
 def formdeckey(passwd: str, data: list):
-    password = SHA256.new(passwd.encode('utf-8')).digest()
+    if passwd:
+        password = SHA256.new(passwd.encode('utf-8')).digest()
+    else:
+        password = b''
     mac, cpu, cpu_name, disk, system_uuid, disk_serial, gpu_serial, mb_serial = b'', b'', b'', b'', b'', b'', b'', b''
     for i in data:
         if i == 'mac':

@@ -28,12 +28,7 @@ class Workspace(QWidget, Ui_Workspace):
         self.directory = self.pathEdit.text()
         if os.path.isdir(self.directory) and self.directory[-1] == '/':
             self.directory = self.directory[0:-1]
-        directorylist = self.directory.split('/')[0:-1]
-        self.outdirectory = ''
-        for i in directorylist:
-            self.outdirectory += i
-            self.outdirectory += '/'
-        self.outdirectory += 'output/'
+        self.outdirectory = str(os.path.dirname(os.path.abspath(__file__))) + "\\output\\encrypted\\"
         if not os.path.isdir(self.outdirectory):
             os.mkdir(self.outdirectory)
         if os.path.isfile(self.directory):
@@ -60,7 +55,6 @@ class Workspace(QWidget, Ui_Workspace):
         else:
             password = b''
         self.key = formenckey(password, reqdata)
-        print(self.key)
         self.enc = AES.new(self.key, AES.MODE_GCM, nonce=self.nonce)
         with open(self.directory, 'rb') as filein, open(self.outdirectory + self.filename, 'wb') as fileout:
             fileout.write(self.nonce)
@@ -72,7 +66,7 @@ class Workspace(QWidget, Ui_Workspace):
                 self.enctext = self.enc.encrypt(data)
                 fileout.write(self.enctext)
             fileout.write(self.enc.digest())
-            print('Шифрование прошло успешно!')
+            print(f'Шифрование файла {self.filename} прошло успешно!')
 
     def decrypt(self):
         self.directory = self.pathEdit.text()
@@ -85,10 +79,7 @@ class Workspace(QWidget, Ui_Workspace):
                     try:
                         self.tosend = ''
                         file = str(file).replace('\\', '/')
-                        for i in file.split('/')[0:-2]:
-                            self.tosend += i
-                            self.tosend += '/'
-                        self.tosend += 'output/'
+                        self.tosend = str(os.path.dirname(os.path.abspath(__file__))) + "\\output\\decrypted\\"
                         self.basedecrypt(file, True, self.tosend)
                     except Exception as e:
                         print('Файл', str(file), "не был дешифрован. Причина: " + str(e))
@@ -98,44 +89,36 @@ class Workspace(QWidget, Ui_Workspace):
         reqdata = self.choosedata('decrypt')
         self.key = formdeckey(password, reqdata)
         self.directory = file
-        with open(self.directory, 'rb') as filein:
-            self.nonce = filein.read(12)
-            enc = AES.new(self.key, AES.MODE_GCM, nonce=self.nonce)
+        self.outdirectory = str(os.path.dirname(os.path.abspath(__file__))) + "\\output\\decrypted\\"
+        if not isdir:
+            if not os.path.isdir(self.outdirectory):
+                os.mkdir(self.outdirectory)
+            self.filename = self.directory.split('/')[-1]
+            outpath = self.outdirectory + self.filename
+        else:
+            outpath = diroutput + self.filename
+            if not os.path.isdir(diroutput):
+                os.mkdir(diroutput)
+        with open(self.directory, 'rb') as filein, open(outpath, 'wb') as fileout:
             file_size = os.path.getsize(self.directory)
             remaining_bytes = file_size - 12 - 16
-            directorylist = self.directory.split('/')[0:-1]
-            self.filename = self.directory.split('/')[-1]
-            self.outdirectory = ''
-            for i in directorylist:
-                self.outdirectory += i
-                self.outdirectory += '/'
-            self.outdirectory += 'output/'
-            if not isdir:
-                if not os.path.isdir(self.outdirectory):
-                    os.mkdir(self.outdirectory)
-                temp_path = self.outdirectory + self.filename + '.tmp'
-            else:
-                temp_path = diroutput + self.filename + '.tmp'
-                if not os.path.isdir(diroutput):
-                    os.mkdir(diroutput)
+            self.nonce = filein.read(12)
             try:
-                with open(temp_path, 'wb') as fileout:
-                    bytes_processed = 0
-                    while bytes_processed < remaining_bytes:
-                        chunk_size = min(1 * 1024 * 1024, remaining_bytes - bytes_processed)
-                        chunk = filein.read(chunk_size)
-                        if not chunk:
-                            break
-                        fileout.write(enc.decrypt(chunk))
-                        bytes_processed += len(chunk)
-                        fileout.close()
-                        if os.path.isfile(temp_path.replace('.tmp', '')):
-                            os.remove(temp_path.replace('.tmp', ''))
-                        os.rename(temp_path, temp_path.replace('.tmp', ''))
+                bytes_processed = 0
+                while bytes_processed < remaining_bytes:
+                    chunk_size = min(1 * 1024 * 1024, remaining_bytes - bytes_processed)
+                    chunk = filein.read(chunk_size)
+                    if not chunk:
+                        break
+                    enc = AES.new(self.key, AES.MODE_GCM, nonce=self.nonce)
+                    fileout.write(enc.decrypt(chunk))
+                    bytes_processed += len(chunk)
+                fileout.close()
                 print("Файл", self.filename, "был успешно дешифрован.")
             except Exception as e:
-                if os.path.exists(temp_path):
-                    os.remove(temp_path)
+                fileout.close()
+                if os.path.exists(outpath):
+                    os.remove(outpath)
                 print(f'Ошибка при дешифровке файла {self.filename}: {e}')
 
     def getinfo(self):
