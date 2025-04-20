@@ -135,7 +135,7 @@
     <string/>
    </property>
    <property name="echoMode">
-    <enum>QLineEdit::Normal</enum>
+    <enum>QLineEdit::PasswordEchoOnEdit</enum>
    </property>
    <property name="placeholderText">
     <string>Введите пароль...</string>

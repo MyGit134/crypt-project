@@ -56,7 +56,7 @@ class Ui_Workspace(object):
         self.passEdit = QtWidgets.QLineEdit(Workspace)
         self.passEdit.setGeometry(QtCore.QRect(450, 80, 240, 22))
         self.passEdit.setText("")
-        self.passEdit.setEchoMode(QtWidgets.QLineEdit.Normal)
+        self.passEdit.setEchoMode(QtWidgets.QLineEdit.PasswordEchoOnEdit)
         self.passEdit.setObjectName("passEdit")
         self.pathEdit = QtWidgets.QLineEdit(Workspace)
         self.pathEdit.setGeometry(QtCore.QRect(450, 200, 240, 22))
