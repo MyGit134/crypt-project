@@ -7,7 +7,6 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[
-        # Добавьте сюда дополнительные файлы (например, иконки)
         # ('data/icon.ico', 'data/modules/infomodule.py', 'data/modules/keymodule.py', 'data/windows/mainwindow.py', 'data/windows/workspace.py')
     ],
     hiddenimports=[
